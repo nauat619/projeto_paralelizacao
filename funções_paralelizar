@@ -1,0 +1,52 @@
+FLAT PROFILE: Mostra a percentagem de tempo que um programa com alguns
+métodos de ordenação de vetores gasta em cada um dos seus métodos.
+
+
+
+%Time (pfc_2_mc, kernelc)– Indica a percentagem de tempo de execução gasto por método;
+
+Cumulative seconds ()– É o tempo gasto por um método acrescido do tempo
+gasto pelos métodos anteriores na tabela;
+
+Self seconds (pfc_2_mc, kernelc)– Mostra o tempo gasto em segundos por método;
+
+Calls (kernelc, minmod)– Mostra o número de vezes que um método foi chamado;
+
+Self s/ calls ()– Representa o tempo em segundos gasto em um método para
+cada chamada;
+
+Total s/ calls (MAIN__)– Mostra o tempo gasto em segundos por um método e suas
+sub-rotinas e
+
+
+
+
+
+CALL GRAPH: Exibe a quantidade de tempo gasto em cada método
+e suas sub-rotinas, na forma de um grafo direcionado e acíclico.
+
+
+
+
+%Time (MAIN__ [1], main[2])– indica a percentagem de tempo gasto pelo método e por
+suas sub rotinas;
+
+Self (lie_splitting, pfc_2_mc)– Representa o tempo gasto pelo método;
+
+Children (lie_splitting)– Representa o tempo gasto pelo “filhos” de um método;
+
+Called (kernelc, minmod)– Indica o número de vezes que este método foi chamado e
+
+
+
+
+pfc_2_mc: pfc de segunda ordem com condicão de contorno periodica
+
+kernelc: Potencial numérico, que também adota um valor constante sobre cada célula.
+
+minmod: função que retorna o limitador de inclinação, evitando soluções indesejaveis na solução numerica das equações de transporte 12 e 13
+
+
+lie_splitting:
+
+
