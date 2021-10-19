@@ -1,0 +1,97 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 24.39      1.95     1.95   500000     0.00     0.00  pfc_2_mc.3939
+ 23.39      3.82     1.87 320640000     0.00     0.00  kernelc.4010
+ 16.63      5.15     1.33      501     0.00     0.01  potencial_n.3969
+ 15.26      6.37     1.22 160000000     0.00     0.00  slope.4005
+ 11.38      7.28     0.91 320000000     0.00     0.00  minmod.4001
+  6.50      7.80     0.52      501     0.00     0.00  entropy.3995
+  1.25      7.90     0.10      500     0.00     0.01  lie_splitting.3920
+  1.13      7.99     0.09        1     0.09     8.00  MAIN__
+  0.13      8.00     0.01      501     0.00     0.00  energia_k.3983
+  0.00      8.00     0.00   320000     0.00     0.00  senoidal.4022
+  0.00      8.00     0.00   160000     0.00     0.00  finicial.4032
+  0.00      8.00     0.00      500     0.00     0.00  campo_n.3954
+
+
+
+Call graph (explanation follows):
+
+
+granularity: each sample hit covers 2 byte(s) for 0.12% of 8.00 seconds
+
+index % time    self  children    called     name
+                0.09    7.91       1/1           main [2]
+[1]    100.0    0.09    7.91       1         MAIN__ [1]
+                0.10    7.28     500/500         lie_splitting.3920 [3]
+                0.52    0.00     501/501         entropy.3995 [9]
+                0.01    0.00     501/501         energia_k.3983 [10]
+                0.00    0.00       1/501         potencial_n.3969 [5]
+                0.00    0.00  160000/160000      finicial.4032 [12]
+-----------------------------------------------
+                                                 <spontaneous>
+[2]    100.0    0.00    8.00                 main [2]
+                0.09    7.91       1/1           MAIN__ [1]
+-----------------------------------------------
+                0.10    7.28     500/500         MAIN__ [1]
+[3]     92.2    0.10    7.28     500         lie_splitting.3920 [3]
+                1.95    2.13  500000/500000      pfc_2_mc.3939 [4]
+                1.33    1.87     500/501         potencial_n.3969 [5]
+                0.00    0.00     500/500         campo_n.3954 [13]
+-----------------------------------------------
+                1.95    2.13  500000/500000      lie_splitting.3920 [3]
+[4]     51.0    1.95    2.13  500000         pfc_2_mc.3939 [4]
+                1.22    0.91 160000000/160000000     slope.4005 [6]
+-----------------------------------------------
+                0.00    0.00       1/501         MAIN__ [1]
+                1.33    1.87     500/501         lie_splitting.3920 [3]
+[5]     40.0    1.33    1.87     501         potencial_n.3969 [5]
+                1.87    0.00 320640000/320640000     kernelc.4010 [7]
+-----------------------------------------------
+                1.22    0.91 160000000/160000000     pfc_2_mc.3939 [4]
+[6]     26.6    1.22    0.91 160000000         slope.4005 [6]
+                0.91    0.00 320000000/320000000     minmod.4001 [8]
+-----------------------------------------------
+                1.87    0.00 320640000/320640000     potencial_n.3969 [5]
+[7]     23.4    1.87    0.00 320640000         kernelc.4010 [7]
+-----------------------------------------------
+                0.91    0.00 320000000/320000000     slope.4005 [6]
+[8]     11.4    0.91    0.00 320000000         minmod.4001 [8]
+-----------------------------------------------
+                0.52    0.00     501/501         MAIN__ [1]
+[9]      6.5    0.52    0.00     501         entropy.3995 [9]
+-----------------------------------------------
+                0.01    0.00     501/501         MAIN__ [1]
+[10]     0.1    0.01    0.00     501         energia_k.3983 [10]
+-----------------------------------------------
+                0.00    0.00  320000/320000      finicial.4032 [12]
+[11]     0.0    0.00    0.00  320000         senoidal.4022 [11]
+-----------------------------------------------
+                0.00    0.00  160000/160000      MAIN__ [1]
+[12]     0.0    0.00    0.00  160000         finicial.4032 [12]
+                0.00    0.00  320000/320000      senoidal.4022 [11]
+-----------------------------------------------
+                0.00    0.00     500/500         lie_splitting.3920 [3]
+[13]     0.0    0.00    0.00     500         campo_n.3954 [13]
+-----------------------------------------------
+
+
+ANÁLISE:
+
+FLAT PROFILE:
+Atraves do flat profile e possivel observar que a função que está demandando maior custo computacional é a (kernelc) o que faz sentido pois a mesma tem maior 
+percentagem de tempo de execução gasto por método, é a função que é mais chamanda durante a execução além de ter o maior tempo gasto em segundos por método.
+
+CALL GRAPH:
+Já atraves do call graph é possivel observar que o (kernelc) realmente é não so o metodo mais chamado mas tambem o que mais gasta tempo em sua execução, assim como foi observado em sua execução   do flat profile, porem agora tabem destaca-se a função (MAIN) aparecendo percentualmente como a que gastou mais tempo em suas subrotinas.
+
+
+Index by function name
+
+   [1] MAIN__                 [12] finicial.4032           [4] pfc_2_mc.3939
+  [13] campo_n.3954            [7] kernelc.4010            [5] potencial_n.3969
+  [10] energia_k.3983          [3] lie_splitting.3920     [11] senoidal.4022
+   [9] entropy.3995            [8] minmod.4001             [6] slope.4005
